@@ -1,0 +1,128 @@
+Feature Set: PetStore Demo Application
+Application URL: https://petstore.octoperf.com/
+
+==================================================
+Feature 1: User Login
+==================================================
+
+As a registered user
+I want to login to PetStore
+So that I can purchase pets and manage my account
+
+Acceptance Criteria:
+1. User logs in with valid username and password → login successful
+2. User logs in with invalid password → error message displayed
+3. User logs in with invalid username → error message displayed
+4. Username is empty → validation error
+5. Password is empty → validation error
+
+Test Data:
+- validUser1: j2ee / j2ee
+- validUser2: demo / demo
+- invalidUser: j2ee / wrongpass
+
+--------------------------------------------------
+
+==================================================
+Feature 2: User Logout
+==================================================
+
+As a logged-in user
+I want to logout
+So that my account is secure
+
+Precondition:
+- User is logged in
+
+Acceptance Criteria:
+1. User clicks Logout → user is logged out successfully
+2. User is redirected to Home page
+3. Logout option is no longer visible
+
+--------------------------------------------------
+
+==================================================
+Feature 3: Browse Pet Categories
+==================================================
+
+As a visitor
+I want to browse pet categories
+So that I can see available pets
+
+Acceptance Criteria:
+1. Home page displays list of pet categories
+2. User clicks a category → pet list page is displayed
+3. Each pet item shows name, description, and price
+
+--------------------------------------------------
+
+==================================================
+Feature 4: View Pet Details
+==================================================
+
+As a visitor
+I want to view pet details
+So that I can decide to buy a pet
+
+Acceptance Criteria:
+1. User selects a pet from the pet list
+2. Pet detail page displays:
+   - Pet name
+   - Description
+   - Price
+   - Add to Cart button
+
+--------------------------------------------------
+
+==================================================
+Feature 5: Add Pet to Cart
+==================================================
+
+As a customer
+I want to add a pet to shopping cart
+So that I can purchase it later
+
+Precondition:
+- User is on pet detail page
+
+Acceptance Criteria:
+1. User adds a pet to cart → pet appears in cart
+2. Cart displays correct quantity
+3. Cart displays correct price
+4. User can add multiple pets to cart
+
+--------------------------------------------------
+
+==================================================
+Feature 6: Checkout Order
+==================================================
+
+As a logged-in user
+I want to checkout my order
+So that I can complete the purchase
+
+Preconditions:
+- User is logged in
+- Cart contains at least one pet
+
+Acceptance Criteria:
+1. User proceeds to checkout from cart
+2. Order summary is displayed correctly
+3. User confirms order
+4. Order is placed successfully
+5. Confirmation message is displayed
+
+--------------------------------------------------
+
+==================================================
+Feature 7: Search Pet
+==================================================
+
+As a visitor
+I want to search pets by keyword
+So that I can find pets quickly
+
+Acceptance Criteria:
+1. User enters keyword in search box
+2. Relevant pets are displayed in search results
+3. "No results found" message is displayed if no pet matches

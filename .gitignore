@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+
+# Local test artifacts
+artifacts/
+playwright-report/
+test-results/
+
+# IDE / OS files
+.vscode/
+.DS_Store
+*.log
+
+# Env files
+.env
+.env.local
