@@ -40,6 +40,7 @@ export class ProductPage {
   async verifyItemDetails(itemId: string, description: string, price: string) {
     await expect(this.page.getByText(itemId)).toBeVisible();
     await expect(this.page.getByText(description)).toBeVisible();
-    await expect(this.page.getByText(price)).toBeVisible();
+    // Use more specific locator for price to avoid multiple matches
+    await expect(this.page.locator('table').getByText(price).first()).toBeVisible();
   }
 }

@@ -5,18 +5,18 @@ export class CheckoutPage {
 
   // Locators - Payment Details
   get cardTypeDropdown() { return this.page.locator('select').first(); }
-  get cardNumberInput() { return this.page.locator('input[name*="card" i], input[value*="999"]'); }
-  get expiryDateInput() { return this.page.locator('input[value*="/"]'); }
+  get cardNumberInput() { return this.page.locator('input[name="order.creditCard"]'); }
+  get expiryDateInput() { return this.page.locator('input[name="order.expiryDate"]'); }
   
   // Billing Address
-  get firstNameInput() { return this.page.locator('input').filter({ hasValue: /<script>/ }); }
-  get lastNameInput() { return this.page.locator('input[value="test"]').first(); }
-  get address1Input() { return this.page.locator('input[value="test"]').nth(1); }
-  get address2Input() { return this.page.locator('input[value="test"]').nth(2); }
-  get cityInput() { return this.page.locator('input[value="test"]').nth(3); }
-  get stateInput() { return this.page.locator('input[value="test"]').nth(4); }
-  get zipInput() { return this.page.locator('input[value="12345"]'); }
-  get countryInput() { return this.page.locator('input[value="test"]').nth(5); }
+  get firstNameInput() { return this.page.locator('input[name="order.billToFirstName"]'); }
+  get lastNameInput() { return this.page.locator('input[name="order.billToLastName"]'); }
+  get address1Input() { return this.page.locator('input[name="order.billAddress1"]'); }
+  get address2Input() { return this.page.locator('input[name="order.billAddress2"]'); }
+  get cityInput() { return this.page.locator('input[name="order.billCity"]'); }
+  get stateInput() { return this.page.locator('input[name="order.billState"]'); }
+  get zipInput() { return this.page.locator('input[name="order.billZip"]'); }
+  get countryInput() { return this.page.locator('input[name="order.billCountry"]'); }
   
   // Actions
   get continueButton() { return this.page.getByRole('button', { name: 'Continue' }); }
