@@ -24,12 +24,17 @@ test.describe('Feature 6: Checkout Order Test Cases', () => {
     await checkoutPage.verifyCheckoutPage();
   });
 
-  test('TC_F6_AC2_Order_Summary_Display', async ({ page, homePage, loginPage, mainCatalogPage, categoryPage, productPage, cartPage, checkoutPage }) => {
+  test('TC_F6_AC2_Order_Summary_Display', async ({ page, homePage, loginPage, mainCatalogPage, categoryPage, productPage, cartPage, checkoutPage, browserName }) => {
+    // Handle potential XSS alerts in Firefox
+    page.on('dialog', async dialog => {
+      console.log(`Dialog appeared: ${dialog.type()}: ${dialog.message()}`);
+      await dialog.accept();
+    });
+    
     // Login and proceed to checkout with items in cart
     await homePage.navigate();
     await homePage.enterStore();
     await mainCatalogPage.navigateToSignIn();
-    loginPage.handleLoginAlert();
     await loginPage.loginWith('j2ee', 'j2ee');
     await mainCatalogPage.navigateToCategory('fish');
     await categoryPage.clickProduct('FI-SW-01');

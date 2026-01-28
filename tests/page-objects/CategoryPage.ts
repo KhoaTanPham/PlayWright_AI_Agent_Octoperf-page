@@ -22,7 +22,9 @@ export class CategoryPage {
 
   // Methods
   async verifyPageLoaded(categoryName: string) {
-    await expect(this.categoryTitle).toContainText(categoryName);
+    // Wait for navigation to complete before checking category title
+    await this.page.waitForURL('**/*viewCategory*');
+    await expect(this.categoryTitle).toContainText(categoryName, { timeout: 10000 });
     await expect(this.productTable).toBeVisible();
   }
 

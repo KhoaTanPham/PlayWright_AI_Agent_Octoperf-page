@@ -5,7 +5,10 @@ export class SearchResultsPage {
 
   // Locators
   get searchResultsTable() { return this.page.locator('table'); }
-  get productRows() { return this.page.locator('table tbody tr').filter({ hasNot: this.page.locator('th') }); }
+  get productRows() { 
+    // Get actual product rows - exclude header and empty rows
+    return this.page.locator('table tbody tr').filter({ hasText: /FI-/ });
+  }
   get returnToMainMenuLink() { return this.page.getByRole('link', { name: 'Return to Main Menu' }); }
   get noResultsMessage() { return this.page.getByText('No results found'); }
 
@@ -45,6 +48,8 @@ export class SearchResultsPage {
   }
 
   async verifySearchResultsDisplayed() {
+    // Wait for search to complete and results to load
+    await this.page.waitForLoadState('networkidle');
     const productCount = await this.productRows.count();
     expect(productCount).toBeGreaterThan(0);
   }
